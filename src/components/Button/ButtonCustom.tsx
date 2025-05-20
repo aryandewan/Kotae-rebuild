@@ -15,7 +15,7 @@ interface ButtonProps {
     onClick?: () => void
 }
 
-const Button = ({ buttonText, type, customClass, id, textClass, arrowClass, custom, animate, initial ,onClick }: ButtonProps) => {
+const ButtonCustom = ({ buttonText, type, customClass, id, textClass, arrowClass, custom, animate, initial ,onClick }: ButtonProps) => {
     return (
         <motion.button
             id={id}
@@ -36,4 +36,4 @@ const Button = ({ buttonText, type, customClass, id, textClass, arrowClass, cust
     )
 }
 
-export default Button
+export default ButtonCustom

@@ -17,14 +17,8 @@ import {
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
-const chartData = [
-    { month: "January", exchange: 186, user: 80 },
-    { month: "February", exchange: 305, user: 200 },
-    { month: "March", exchange: 237, user: 120 },
-    { month: "April", exchange: 73, user: 190 },
-    { month: "May", exchange: 209, user: 130 },
-    { month: "June", exchange: 214, user: 140 },
-]
+import { dashboardData } from "@/data/data"
+
 const chartConfig = {
     exchange: {
         label: "Exchange",
@@ -36,14 +30,18 @@ const chartConfig = {
     },
 } satisfies ChartConfig
 
-const Areachart = () => {
+type Props = {
+    timeframe: "7d" | "1m" | "6m" | "1y"
+}
+
+const Userschart = ({timeframe}: Props) => {
+    const chartData = dashboardData[timeframe]
+    const totalUsers = chartData.reduce((acc, d) => acc + d.users, 0)
+
     return (
-        <Card>
+        <Card className="max-w-lg rounded-none border-2 border-black dark:border-white">
             <CardHeader>
-                <CardTitle>957 Total Users</CardTitle>
-                <CardDescription>
-                    +23% from last month
-                </CardDescription>
+                <CardTitle><span className="text-3xl">{totalUsers}</span> Total Users</CardTitle>
             </CardHeader>
             <CardContent>
                 <ChartContainer config={chartConfig}>
@@ -57,7 +55,7 @@ const Areachart = () => {
                     >
                         <CartesianGrid vertical={false} />
                         <XAxis
-                            dataKey="month"
+                            dataKey="name"
                             tickLine={false}
                             axisLine={false}
                             tickMargin={8}
@@ -91,7 +89,7 @@ const Areachart = () => {
                             </linearGradient>
                         </defs>
                         <Area
-                            dataKey="user"
+                            dataKey="users"
                             type="natural"
                             fill="url(#fillMobile)"
                             fillOpacity={0.4}
@@ -99,7 +97,7 @@ const Areachart = () => {
                             stackId="a"
                         />
                         <Area
-                            dataKey="exchange"
+                            dataKey="queries"
                             type="natural"
                             fill="url(#fillDesktop)"
                             fillOpacity={0.4}
@@ -112,8 +110,8 @@ const Areachart = () => {
             <CardFooter>
                 <div className="flex w-full items-start gap-2 text-sm">
                     <div className="grid gap-2">
-                        <div className="flex items-center gap-2 font-medium leading-none">
-                            Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+                        <div className="flex items-end gap-2 font-medium">
+                            <span className="text-3xl">5.2%</span><TrendingUp className="h-5 w-5" />
                         </div>
                         <div className="flex items-center gap-2 leading-none text-muted-foreground">
                             January - June 2025
@@ -124,4 +122,4 @@ const Areachart = () => {
         </Card>
     )
 }
-export default Areachart
+export default Userschart
