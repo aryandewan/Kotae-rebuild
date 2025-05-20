@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import { FaCheck } from "react-icons/fa";
 import { usecases } from "@/data/data";
 import Image from "next/image";
-import { motion, useAnimation, useInView, useScroll, useTransform } from "motion/react";
+import { motion, useAnimation, useInView} from "motion/react";
 
 type UseCardsProps = {
     title: string;
