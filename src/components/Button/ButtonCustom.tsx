@@ -1,16 +1,14 @@
 "use client"
-import { motion } from 'motion/react'
+import {motion, MotionProps} from 'motion/react'
 import { MdArrowOutward } from "react-icons/md"
 
-interface ButtonProps {
+interface ButtonProps extends MotionProps {
     buttonText: string
     customClass?: string
     id?: string
     textClass?: string
     arrowClass?: string
     custom?: number
-    animate?: any
-    initial?: any
     type?: "button" | "submit" | "reset" | undefined
     onClick?: () => void
 }

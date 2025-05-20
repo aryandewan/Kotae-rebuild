@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from 'react'
 import Image from "next/image";
 import { features } from "@/data/data";
-import { motion, useAnimation, useInView, useScroll, useTransform } from "motion/react";
+import { motion, useAnimation, useInView } from "motion/react";
 
 const Features = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
