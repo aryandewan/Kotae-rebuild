@@ -21,13 +21,13 @@ const Tryme = () => {
     const chatVariants = {
         open: {
             opacity: 1,
-            y: 0,
+            x: 0,
             pointerEvents: "auto" as const,
             transition: { duration: 0.3, ease: "easeOut" },
         },
         closed: {
             opacity: 0,
-            y: 50,
+            x: "100%",
             pointerEvents: "none" as const,
             transition: { duration: 0.3, ease: "easeIn" },
         }
@@ -42,7 +42,7 @@ const Tryme = () => {
                 variants={chatVariants}
                 animate={isOpen ? "open" : "closed"}
                 initial={false}
-                className="absolute bottom-32 right-6 z-100"
+                className="absolute bottom-40 right-6 z-100"
             >
                 <ChatWindow />
             </motion.div>
